@@ -4,7 +4,7 @@ import mdx from '@astrojs/mdx';
 import netlify from '@astrojs/netlify';
 
 export default defineConfig({
-  site: 'https://ta1sph.netlify.app',
+  site: 'https://ta1sph.info',
   integrations: [mdx()],
   adapter: netlify(),
   output: 'static',
