@@ -56,3 +56,43 @@ const {
 
   </div>
 </section>
+
+<style>
+  /* Overlay her zaman görünür — hover'da daha da belirgin */
+  .portfolio-item .caption {
+    background: rgba(10, 20, 60, 0.72);
+    opacity: 1 !important;
+  }
+
+  .portfolio-item:hover .caption {
+    background: rgba(10, 20, 60, 0.88);
+  }
+
+  /* Başlık ve metin renkleri */
+  .portfolio-item .caption-content .h2 {
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.4rem;
+  }
+
+  .portfolio-item .caption-content p {
+    color: #e0e8f8;
+    font-size: 0.95rem;
+  }
+
+  .portfolio-item .caption-content .small {
+    color: #90caf9;
+  }
+
+  /* QSO numara */
+  .qso-numara {
+    font-family: monospace;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    color: #ffc107;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+</style>

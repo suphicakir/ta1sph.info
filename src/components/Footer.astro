@@ -14,36 +14,29 @@ interface Props {
 const buYil = new Date().getFullYear();
 
 const {
-  telif = `Copyright © ${buYil}`,
-  sosyalLinkler = [
-    {
-      ikon: 'icon-social-github',
-      link: 'https://github.com/kullanici-adin',
-      baslik: 'GitHub',
-    },
-    {
-      ikon: 'icon-social-linkedin',
-      link: 'https://linkedin.com/in/kullanici-adin',
-      baslik: 'LinkedIn',
-    },
-    {
-      ikon: 'icon-social-twitter',
-      link: 'https://twitter.com/kullanici-adin',
-      baslik: 'Twitter',
-    },
-  ],
+  telif = `Copyright © ${buYil} TA1SPH — Suphi Çakır`,
+  sosyalLinkler = [],
 } = Astro.props;
 ---
 
-<!-- Footer -->
-<footer class="footer text-center">
+<footer class="footer text-center" style="background-color:#0d1630;">
   <div class="container px-4 px-lg-5">
 
-    <ul class="list-inline mb-5">
+    <!-- Çağrı işareti ve CQ -->
+    <div class="mb-4">
+      <p class="text-warning fw-bold mb-1" style="font-family:monospace; font-size:1rem; letter-spacing:2px;">
+        CQ CQ CQ — 73 DE TA1SPH
+      </p>
+      <p class="text-white-50 small mb-0">
+        DMR ID: 2866151 · KN41KB · İstanbul
+      </p>
+    </div>
+
+    <!-- Sosyal linkler -->
+    <ul class="list-inline mb-4">
       {sosyalLinkler.map((sosyal) => (
         <li class="list-inline-item">
-          <a
-            class="social-link rounded-circle text-white me-3"
+          <a class="social-link rounded-circle text-white me-3"
             href={sosyal.link}
             title={sosyal.baslik}
             target="_blank"
@@ -54,6 +47,28 @@ const {
         </li>
       ))}
     </ul>
+
+    <!-- Hızlı linkler -->
+    <div class="d-flex justify-content-center gap-4 flex-wrap mb-4">
+      <a href="/" class="text-white-50 small text-decoration-none">Ana Sayfa</a>
+      <a href="#about" class="text-white-50 small text-decoration-none">Hakkımda</a>
+      <a href="#services" class="text-white-50 small text-decoration-none">Ekipmanlar</a>
+      <a href="#portfolio" class="text-white-50 small text-decoration-none">Portfolyo</a>
+      <a href="/blog" class="text-white-50 small text-decoration-none">Blog</a>
+      <a href="#contact" class="text-white-50 small text-decoration-none">İletişim</a>
+    </div>
+
+    <!-- ARC rozeti -->
+    <div class="mb-4">
+      <a href="https://radio.org.tr" target="_blank" rel="noopener noreferrer"
+        class="badge px-3 py-2 text-decoration-none"
+        style="background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); color:#90caf9;">
+        <i class="fas fa-broadcast-tower me-1"></i>
+        ARC Üyesi · YM1KTC
+      </a>
+    </div>
+
+    <hr style="border-color:rgba(255,255,255,0.1);" />
 
     <p class="text-muted small mb-0">{telif}</p>
 

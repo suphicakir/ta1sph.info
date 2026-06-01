@@ -1,25 +1,118 @@
 ---
 // src/components/Contact.astro
-interface Props {
-  haritaUrl?: string;
-  haritaBaslik?: string;
-}
-
-const {
-  haritaUrl = '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d8028.655482740629!2d28.91396773978922!3d41.083247110120276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1str!2str!4v1780309182636!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
-  haritaBaslik = 'QTH',
-} = Astro.props;
 ---
 
-<div class="map" id="contact">
-  <iframe
-    src={haritaUrl}
-    title={haritaBaslik}
-    width="100%"
-    height="100%"
-    style="border: 0;"
-    allowfullscreen
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"
-  ></iframe>
-</div>
+<section id="contact" class="content-section bg-light">
+  <div class="container px-4 px-lg-5">
+
+    <div class="content-section-heading text-center mb-5">
+      <h3 class="text-secondary mb-0">İletişim</h3>
+      <h2 class="mb-2">QSO Yapalım!</h2>
+      <p class="text-muted">Aşağıdaki kanallardan benimle iletişime geçebilirsin</p>
+    </div>
+
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+
+      <!-- Sol kolon: İletişim Kartları -->
+      <div class="col-lg-5 mb-5">
+
+        <!-- Çağrı İşareti -->
+        <div class="card border-0 shadow-sm mb-3">
+          <div class="card-body d-flex align-items-center p-4">
+            <div class="me-3" style="min-width:48px; text-align:center;">
+              <i class="fas fa-broadcast-tower fa-2x" style="color:#1a3a6b;"></i>
+            </div>
+            <div>
+              <div class="text-muted small">Çağrı İşareti</div>
+              <div class="fw-bold fs-5" style="color:#1a3a6b;">TA1SPH</div>
+              <div class="text-muted small">DMR ID: 2866151</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Frekans -->
+        <div class="card border-0 shadow-sm mb-3">
+          <div class="card-body d-flex align-items-center p-4">
+            <div class="me-3" style="min-width:48px; text-align:center;">
+              <i class="fas fa-signal fa-2x" style="color:#1a3a6b;"></i>
+            </div>
+            <div>
+              <div class="text-muted small">Çevrim Frekansı</div>
+              <div class="fw-bold fs-5" style="color:#1a3a6b;">439.200 MHz</div>
+              <div class="text-muted small">Tekstilkent Rölesi · Tx 88.5 · TG 28690</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dernek -->
+        <div class="card border-0 shadow-sm mb-3">
+          <div class="card-body d-flex align-items-center p-4">
+            <div class="me-3" style="min-width:48px; text-align:center;">
+              <i class="fas fa-users fa-2x" style="color:#1a3a6b;"></i>
+            </div>
+            <div>
+              <div class="text-muted small">Dernek</div>
+              <div class="fw-bold fs-5" style="color:#1a3a6b;">ARC | YM1KTC</div>
+              <a href="https://radio.org.tr" target="_blank" rel="noopener noreferrer" class="text-muted small">radio.org.tr →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Konum -->
+        <div class="card border-0 shadow-sm mb-3">
+          <div class="card-body d-flex align-items-center p-4">
+            <div class="me-3" style="min-width:48px; text-align:center;">
+              <i class="fas fa-map-marker-alt fa-2x" style="color:#1a3a6b;"></i>
+            </div>
+            <div>
+              <div class="text-muted small">QTH</div>
+              <div class="fw-bold fs-5" style="color:#1a3a6b;">İstanbul, Gaziosmanpaşa</div>
+              <div class="text-muted small">Locator: KN41KB</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Sağ kolon: Harita -->
+      <div class="col-lg-7 mb-5">
+        <div class="rounded shadow-sm overflow-hidden" style="height:420px;">
+          <iframe
+            src="https://maps.google.com/maps?f=q&source=s_q&hl=tr&q=Gaziosmanpa%C5%9Fa,+%C4%B0stanbul&ie=UTF8&t=m&z=13&output=embed"
+            title="İstanbul Gaziosmanpaşa Konumu"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Alt satır: Sosyal linkler -->
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <hr class="mb-4"/>
+        <p class="text-muted mb-3">Sosyal medya ve topluluk kanallarında da bulunabilirsin</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+          <a href="https://radio.org.tr" target="_blank" rel="noopener noreferrer"
+            class="btn btn-outline-primary px-4">
+            <i class="fas fa-globe me-2"></i>radio.org.tr
+          </a>
+          <a href="https://t.me/ym1ktc" target="_blank" rel="noopener noreferrer"
+            class="btn btn-outline-primary px-4">
+            <i class="fab fa-telegram me-2"></i>Telegram
+          </a>
+          <a href="https://dmr.radio.org.tr" target="_blank" rel="noopener noreferrer"
+            class="btn btn-outline-primary px-4">
+            <i class="fas fa-satellite-dish me-2"></i>DMR Editor
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>

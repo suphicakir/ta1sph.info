@@ -3,12 +3,21 @@
 interface Props {
   title?: string;
   description?: string;
+  ogGorsel?: string;
+  ogTip?: string;
+  kanonikalUrl?: string;
 }
 
 const {
-  title = 'Portfolyo',
-  description = 'Kişisel portfolyo ve blog sitesi',
+  title = 'TA1SPH | Suphi Çakır — Amatör Radyo',
+  description = 'TA1SPH — Suphi Çakır. İstanbul, Gaziosmanpaşa. DMR ID: 2866151. Locator: KN41KB. Amatör Radyocular Derneği (ARC | YM1KTC) üyesi.',
+  ogGorsel = '/assets/img/og-image.jpg',
+  ogTip = 'website',
+  kanonikalUrl = Astro.url.href,
 } = Astro.props;
+
+const sitUrl = 'https://ta1sph.info';
+const tamBaslik = title.includes('TA1SPH') ? title : `${title} | TA1SPH`;
 ---
 
 <!DOCTYPE html>
@@ -16,8 +25,31 @@ const {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Temel SEO -->
+    <title>{tamBaslik}</title>
     <meta name="description" content={description} />
-    <title>{title}</title>
+    <meta name="author" content="Suphi Çakır — TA1SPH" />
+    <meta name="keywords" content="TA1SPH, amatör radyo, telsiz, DMR, İstanbul, KN41KB, ARC, YM1KTC, 28690" />
+    <link rel="canonical" href={kanonikalUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogTip} />
+    <meta property="og:url" content={kanonikalUrl} />
+    <meta property="og:title" content={tamBaslik} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${sitUrl}${ogGorsel}`} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="TA1SPH" />
+    <meta property="og:locale" content="tr_TR" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={kanonikalUrl} />
+    <meta name="twitter:title" content={tamBaslik} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${sitUrl}${ogGorsel}`} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -49,14 +81,12 @@ const {
   </head>
 
   <body id="page-top">
-
-    <!-- Sayfa içeriği buraya gelir -->
     <slot />
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Template JS -->
-    <script src="/js/scripts.js" is:inline></script>
+    <script src="/js/scripts.js"></script>
   </body>
 </html>

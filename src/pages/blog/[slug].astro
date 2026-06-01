@@ -1,5 +1,4 @@
 ---
-// src/pages/blog/[slug].astro
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Sidebar from '../../components/Sidebar.astro';
 import Footer from '../../components/Footer.astro';
@@ -15,137 +14,14 @@ export async function getStaticPaths() {
 
 const { yazi } = Astro.props;
 const { Content } = await render(yazi);
+
+const ogGorsel = yazi.data.kapakGorseli ?? '/assets/img/og-image.jpg';
 ---
 
 <BaseLayout
-  title={`${yazi.data.baslik} | Blog`}
+  title={yazi.data.baslik}
   description={yazi.data.ozet}
+  ogGorsel={ogGorsel}
+  ogTip="article"
+  kanonikalUrl={`https://ta1sph.info/blog/${yazi.id}`}
 >
-  <Sidebar sayfaTipi="blog" />
-
-  <!-- Yazı Header -->
-  <header
-    class="masthead d-flex align-items-center"
-    style={yazi.data.kapakGorseli
-      ? `background-image: url('${yazi.data.kapakGorseli}');`
-      : "background-image: url('/assets/img/bg-masthead.jpg');"}
-  >
-    <div class="container px-4 px-lg-5 text-center">
-      <h1 class="mb-1">{yazi.data.baslik}</h1>
-      <h3 class="mb-3"><em>{yazi.data.ozet}</em></h3>
-      <div class="text-white-50">
-        <small>
-          <i class="fas fa-calendar me-1"></i>
-          {yazi.data.tarih.toLocaleDateString('tr-TR', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}
-          &nbsp;·&nbsp;
-          <i class="fas fa-user me-1"></i>
-          {yazi.data.yazar}
-        </small>
-      </div>
-    </div>
-  </header>
-
-  <!-- Yazı İçeriği -->
-  <section class="content-section bg-light">
-    <div class="container px-4 px-lg-5">
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-
-          <!-- Etiketler -->
-          {yazi.data.etiketler.length > 0 && (
-            <div class="mb-4">
-              {yazi.data.etiketler.map((etiket) => (
-                <span class="badge bg-primary me-1">{etiket}</span>
-              ))}
-            </div>
-          )}
-
-          <!-- MDX İçerik -->
-          <div class="blog-content">
-            <Content />
-          </div>
-
-          <!-- Güncelleme tarihi -->
-          {yazi.data.guncelleme && (
-            <p class="text-muted small mt-4">
-              <i class="fas fa-edit me-1"></i>
-              Son güncelleme:{' '}
-              {yazi.data.guncelleme.toLocaleDateString('tr-TR', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </p>
-          )}
-
-          <!-- Geri Dön -->
-          <div class="mt-5 pt-4 border-top">
-            <a href="/blog" class="btn btn-outline-primary">
-              ← Blog'a Dön
-            </a>
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <Footer />
-
-</BaseLayout>
-
-<style>
-  .blog-content :global(h1),
-  .blog-content :global(h2),
-  .blog-content :global(h3) {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-  }
-  .blog-content :global(p) {
-    line-height: 1.8;
-    margin-bottom: 1.2rem;
-  }
-  .blog-content :global(pre) {
-    background: #1e1e1e;
-    color: #d4d4d4;
-    padding: 1.5rem;
-    border-radius: 8px;
-    overflow-x: auto;
-    margin-bottom: 1.5rem;
-  }
-  .blog-content :global(code) {
-    background: #f0f0f0;
-    padding: 0.2rem 0.4rem;
-    border-radius: 4px;
-    font-size: 0.9em;
-  }
-  .blog-content :global(pre code) {
-    background: transparent;
-    padding: 0;
-  }
-  .blog-content :global(blockquote) {
-    border-left: 4px solid #0d6efd;
-    padding-left: 1rem;
-    color: #6c757d;
-    font-style: italic;
-    margin: 1.5rem 0;
-  }
-  .blog-content :global(img) {
-    max-width: 100%;
-    border-radius: 8px;
-    margin: 1.5rem 0;
-  }
-  .blog-content :global(ul),
-  .blog-content :global(ol) {
-    padding-left: 1.5rem;
-    margin-bottom: 1.2rem;
-  }
-  .blog-content :global(li) {
-    line-height: 1.8;
-    margin-bottom: 0.4rem;
-  }
-</style>
