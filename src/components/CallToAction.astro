@@ -1,0 +1,46 @@
+---
+// src/components/CallToAction.astro
+interface Buton {
+  yazi: string;
+  link: string;
+  stil: 'light' | 'dark';
+}
+
+interface Props {
+  baslik?: string;
+  butonlar?: Buton[];
+}
+
+const {
+  baslik = 'Bir projen mi var? Konuşalım!',
+  butonlar = [
+    {
+      yazi: 'CV İndir',
+      link: '/cv.pdf',
+      stil: 'light',
+    },
+    {
+      yazi: 'İletişime Geç',
+      link: '#contact',
+      stil: 'dark',
+    },
+  ],
+} = Astro.props;
+---
+
+<section class="content-section bg-primary text-white">
+  <div class="container px-4 px-lg-5 text-center">
+
+    <h2 class="mb-4">{baslik}</h2>
+
+    {butonlar.map((buton) => (
+      <a
+        class={`btn btn-xl btn-${buton.stil} me-4`}
+        href={buton.link}
+      >
+        {buton.yazi}
+      </a>
+    ))}
+
+  </div>
+</section>

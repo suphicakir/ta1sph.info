@@ -1,0 +1,32 @@
+---
+// src/components/Hero.astro
+interface Props {
+  baslik?: string;
+  altBaslik?: string;
+  butonYazi?: string;
+  butonHedef?: string;
+}
+
+const {
+  baslik = 'Merhaba, Ben TA1SPH',
+  altBaslik = 'Amatör Radyo Operatörüyüm',
+  butonYazi = 'Daha Fazla',
+  butonHedef = '#about',
+} = Astro.props;
+---
+
+<header class="masthead d-flex align-items-center">
+  <div class="container px-4 px-lg-5 text-center">
+    <h1 class="mb-1">{baslik}</h1>
+    <h3 class="mb-5"><em>{altBaslik}</em></h3>
+    <a class="btn btn-primary btn-xl js-scroll-trigger" href={butonHedef}>
+      {butonYazi}
+    </a>
+  </div>
+</header>
+
+<style>
+  .masthead {
+    background-image: url('/assets/img/bg-masthead.jpg');
+  }
+</style>

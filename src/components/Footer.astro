@@ -1,0 +1,66 @@
+---
+// src/components/Footer.astro
+interface SosyalLink {
+  ikon: string;
+  link: string;
+  baslik: string;
+}
+
+interface Props {
+  telif?: string;
+  sosyalLinkler?: SosyalLink[];
+}
+
+const buYil = new Date().getFullYear();
+
+const {
+  telif = `Copyright © ${buYil}`,
+  sosyalLinkler = [
+    {
+      ikon: 'icon-social-github',
+      link: 'https://github.com/kullanici-adin',
+      baslik: 'GitHub',
+    },
+    {
+      ikon: 'icon-social-linkedin',
+      link: 'https://linkedin.com/in/kullanici-adin',
+      baslik: 'LinkedIn',
+    },
+    {
+      ikon: 'icon-social-twitter',
+      link: 'https://twitter.com/kullanici-adin',
+      baslik: 'Twitter',
+    },
+  ],
+} = Astro.props;
+---
+
+<!-- Footer -->
+<footer class="footer text-center">
+  <div class="container px-4 px-lg-5">
+
+    <ul class="list-inline mb-5">
+      {sosyalLinkler.map((sosyal) => (
+        <li class="list-inline-item">
+          <a
+            class="social-link rounded-circle text-white me-3"
+            href={sosyal.link}
+            title={sosyal.baslik}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class={sosyal.ikon}></i>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <p class="text-muted small mb-0">{telif}</p>
+
+  </div>
+</footer>
+
+<!-- Yukarı Kaydır Butonu -->
+<a class="scroll-to-top rounded" href="#page-top">
+  <i class="fas fa-angle-up"></i>
+</a>

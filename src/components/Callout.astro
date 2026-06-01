@@ -1,0 +1,33 @@
+---
+// src/components/Callout.astro
+interface Props {
+  baslik?: string;
+  vurguKelime?: string;
+  butonYazi?: string;
+  butonLink?: string;
+}
+
+const {
+  baslik = 'Birlikte harika şeyler',
+  vurguKelime = 'üretelim!',
+  butonYazi = 'İletişime Geç',
+  butonLink = '#contact',
+} = Astro.props;
+---
+
+<section class="callout">
+  <div class="container px-4 px-lg-5 text-center">
+    <h2 class="mx-auto mb-5">
+      {baslik} <em>{vurguKelime}</em>
+    </h2>
+    <a class="btn btn-primary btn-xl js-scroll-trigger" href={butonLink}>
+      {butonYazi}
+    </a>
+  </div>
+</section>
+
+<style>
+  .callout {
+    background-image: url('/assets/img/bg-callout.jpg');
+  }
+</style>

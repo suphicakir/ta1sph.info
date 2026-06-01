@@ -1,17 +1,146 @@
 ---
-
+// src/pages/index.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Services from '../components/Services.astro';
+import Callout from '../components/Callout.astro';
+import Portfolio from '../components/Portfolio.astro';
+import CallToAction from '../components/CallToAction.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+  title="TA1SPH | Suphi Ç."
+  description="Full Stack Developer kişisel portfolyo ve blog sitesi"
+>
+
+  <Sidebar sayfaTipi="ana" />
+
+  <Hero
+    baslik="Merhaba, Ben TA1SPH"
+    altBaslik="QTH İstanbul, Gaziosmanpaşa @ Locater : KN41KB"
+    butonYazi="QRV @ 28690 73!"
+    butonHedef="#about"
+  />
+
+  <About
+    baslik="Hakkımda"
+    aciklama="Merhaba! Ben bir Full Stack Developer'ım. Modern web teknolojileri,
+    açık kaynak yazılımlar ve kullanıcı odaklı tasarım konularına olan tutkumla
+    projeler üretiyorum. Pardus, Linux ve özgür yazılım topluluklarına katkı
+    sağlamaktan keyif alıyorum."
+    butonYazi="Neler Yapıyorum?"
+    butonHedef="#services"
+  />
+
+  <Services
+    ustBaslik="Hizmetler"
+    anaBaslik="Neler Yapıyorum?"
+    hizmetler={[
+      {
+        ikon: 'icon-screen-smartphone',
+        baslik: 'Responsive Tasarım',
+        aciklama: 'Her ekran boyutunda mükemmel görünen arayüzler tasarlıyorum.',
+      },
+      {
+        ikon: 'icon-pencil',
+        baslik: 'Frontend Geliştirme',
+        aciklama: 'Modern web teknolojileriyle hızlı ve etkileyici arayüzler üretiyorum.',
+      },
+      {
+        ikon: 'icon-rocket',
+        baslik: 'Backend Geliştirme',
+        aciklama: 'Güvenli ve ölçeklenebilir sunucu taraflı sistemler kuruyorum.',
+      },
+      {
+        ikon: 'icon-wrench',
+        baslik: 'Teknik Destek',
+        aciklama: 'Mevcut projelerin bakımını ve optimizasyonunu yapıyorum.',
+      },
+    ]}
+  />
+
+  <Callout
+    baslik="Birlikte harika şeyler"
+    vurguKelime="üretelim!"
+    butonYazi="İletişime Geç"
+    butonLink="#contact"
+  />
+
+  <Portfolio
+    ustBaslik="Portfolyo"
+    anaBaslik="Son Projelerim"
+    projeler={[
+      {
+        gorsel: '/assets/img/portfolio-1.jpg',
+        baslik: 'Proje Bir',
+        aciklama: 'Modern bir web uygulaması tasarımı ve geliştirmesi.',
+        link: '#!',
+      },
+      {
+        gorsel: '/assets/img/portfolio-2.jpg',
+        baslik: 'Proje İki',
+        aciklama: 'Responsive arayüz ve kullanıcı deneyimi odaklı proje.',
+        link: '#!',
+      },
+      {
+        gorsel: '/assets/img/portfolio-3.jpg',
+        baslik: 'Proje Üç',
+        aciklama: 'Full stack uygulama geliştirme ve deployment süreci.',
+        link: '#!',
+      },
+      {
+        gorsel: '/assets/img/portfolio-4.jpg',
+        baslik: 'Proje Dört',
+        aciklama: 'Açık kaynak katkısı ve teknik dokümantasyon çalışması.',
+        link: '#!',
+      },
+    ]}
+  />
+
+  <CallToAction
+    baslik="Bir projen mi var? Konuşalım!"
+    butonlar={[
+      {
+        yazi: 'CV İndir',
+        link: '/cv.pdf',
+        stil: 'light',
+      },
+      {
+        yazi: 'İletişime Geç',
+        link: '#contact',
+        stil: 'dark',
+      },
+    ]}
+  />
+
+  <Contact
+    haritaUrl="https://maps.google.com/maps?f=q&source=s_q&hl=tr&q=Istanbul,+Turkey&ie=UTF8&t=m&z=13&output=embed"
+    haritaBaslik="İstanbul Konumu"
+  />
+
+  <Footer
+    telif={`Copyright © ${new Date().getFullYear()} [Adın Soyadın]`}
+    sosyalLinkler={[
+      {
+        ikon: 'icon-social-github',
+        link: 'https://github.com/kullanici-adin',
+        baslik: 'GitHub',
+      },
+      {
+        ikon: 'icon-social-linkedin',
+        link: 'https://linkedin.com/in/kullanici-adin',
+        baslik: 'LinkedIn',
+      },
+      {
+        ikon: 'icon-social-twitter',
+        link: 'https://twitter.com/kullanici-adin',
+        baslik: 'Twitter',
+      },
+    ]}
+  />
+
+</BaseLayout>

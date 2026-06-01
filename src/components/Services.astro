@@ -1,0 +1,64 @@
+---
+// src/components/Services.astro
+interface Hizmet {
+  ikon: string;
+  baslik: string;
+  aciklama: string;
+}
+
+interface Props {
+  ustBaslik?: string;
+  anaBaslik?: string;
+  hizmetler?: Hizmet[];
+}
+
+const {
+  ustBaslik = 'Hizmetler',
+  anaBaslik = 'Neler Yapıyorum?',
+  hizmetler = [
+    {
+      ikon: 'icon-screen-smartphone',
+      baslik: 'Responsive Tasarım',
+      aciklama: 'Her ekran boyutunda mükemmel görünen arayüzler tasarlıyorum.',
+    },
+    {
+      ikon: 'icon-pencil',
+      baslik: 'Frontend Geliştirme',
+      aciklama: 'Modern web teknolojileriyle hızlı ve etkileyici arayüzler üretiyorum.',
+    },
+    {
+      ikon: 'icon-rocket',
+      baslik: 'Backend Geliştirme',
+      aciklama: 'Güvenli ve ölçeklenebilir sunucu taraflı sistemler kuruyorum.',
+    },
+    {
+      ikon: 'icon-wrench',
+      baslik: 'Teknik Destek',
+      aciklama: 'Mevcut projelerin bakımını ve optimizasyonunu yapıyorum.',
+    },
+  ],
+} = Astro.props;
+---
+
+<section class="content-section bg-primary text-white text-center" id="services">
+  <div class="container px-4 px-lg-5">
+
+    <div class="content-section-heading">
+      <h3 class="text-secondary mb-0">{ustBaslik}</h3>
+      <h2 class="mb-5">{anaBaslik}</h2>
+    </div>
+
+    <div class="row gx-4 gx-lg-5">
+      {hizmetler.map((hizmet) => (
+        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+          <span class="service-icon rounded-circle mx-auto mb-3">
+            <i class={hizmet.ikon}></i>
+          </span>
+          <h4><strong>{hizmet.baslik}</strong></h4>
+          <p class="text-faded mb-0">{hizmet.aciklama}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

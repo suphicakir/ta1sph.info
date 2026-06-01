@@ -1,0 +1,112 @@
+---
+// src/pages/blog/index.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const tumYazilar = await getCollection('blog', ({ data }) => data.yayinda === true);
+
+const yazilar = tumYazilar.sort(
+  (a, b) => b.data.tarih.valueOf() - a.data.tarih.valueOf()
+);
+---
+
+<BaseLayout
+  title="Blog | Portfolyo"
+  description="Yazılım, teknoloji ve deneyimlerim hakkında yazılar"
+>
+  <Sidebar sayfaTipi="blog" />
+
+  <!-- Blog Header -->
+  <header class="masthead d-flex align-items-center" style="background-image: url('/assets/img/bg-masthead.jpg');">
+    <div class="container px-4 px-lg-5 text-center">
+      <h1 class="mb-1">Blog</h1>
+      <h3 class="mb-5"><em>Yazılar, notlar ve deneyimler</em></h3>
+    </div>
+  </header>
+
+  <!-- Blog Listesi -->
+  <section class="content-section bg-light">
+    <div class="container px-4 px-lg-5">
+
+      {yazilar.length === 0 ? (
+        <div class="text-center py-5">
+          <h3 class="text-muted">Henüz yazı yok.</h3>
+          <p class="text-muted">Yakında yeni yazılar eklenecek!</p>
+        </div>
+      ) : (
+        <div class="row gx-4 gx-lg-5">
+          {yazilar.map((yazi) => (
+            <div class="col-lg-6 mb-5">
+              <div class="card h-100 border-0 shadow-sm">
+
+                {yazi.data.kapakGorseli && (
+                  <img
+                    src={yazi.data.kapakGorseli}
+                    class="card-img-top"
+                    alt={yazi.data.baslik}
+                    style="height: 200px; object-fit: cover;"
+                  />
+                )}
+
+                <div class="card-body p-4">
+                  <!-- Etiketler -->
+                  <div class="mb-2">
+                    {yazi.data.etiketler.map((etiket) => (
+                      <span class="badge bg-primary me-1">{etiket}</span>
+                    ))}
+                  </div>
+
+                  <!-- Başlık -->
+                  <h4 class="card-title">
+                    <a
+                      href={`/blog/${yazi.id}`}
+                      class="text-decoration-none text-dark"
+                    >
+                      {yazi.data.baslik}
+                    </a>
+                  </h4>
+
+                  <!-- Özet -->
+                  <p class="card-text text-muted">{yazi.data.ozet}</p>
+                </div>
+
+                <div class="card-footer bg-transparent border-0 px-4 pb-4">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <!-- Tarih & Yazar -->
+                    <small class="text-muted">
+                      <i class="fas fa-calendar me-1"></i>
+                      {yazi.data.tarih.toLocaleDateString('tr-TR', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </small>
+                    <small class="text-muted">
+                      <i class="fas fa-user me-1"></i>
+                      {yazi.data.yazar}
+                    </small>
+                  </div>
+
+                  <!-- Devamını Oku -->
+                  <a
+                    href={`/blog/${yazi.id}`}
+                    class="btn btn-primary btn-sm mt-3 w-100"
+                  >
+                    Devamını Oku →
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+    </div>
+  </section>
+
+  <Footer />
+
+</BaseLayout>
