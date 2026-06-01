@@ -1,6 +1,6 @@
 ---
 // src/components/Services.astro
-interface Hizmet {
+interface Ekipman {
   ikon: string;
   baslik: string;
   aciklama: string;
@@ -9,55 +9,95 @@ interface Hizmet {
 interface Props {
   ustBaslik?: string;
   anaBaslik?: string;
-  hizmetler?: Hizmet[];
+  hizmetler?: Ekipman[];
 }
 
 const {
-  ustBaslik = 'Hizmetler',
-  anaBaslik = 'Neler Yapıyorum?',
-  hizmetler = [
-    {
-      ikon: 'icon-screen-smartphone',
-      baslik: 'Responsive Tasarım',
-      aciklama: 'Her ekran boyutunda mükemmel görünen arayüzler tasarlıyorum.',
-    },
-    {
-      ikon: 'icon-pencil',
-      baslik: 'Frontend Geliştirme',
-      aciklama: 'Modern web teknolojileriyle hızlı ve etkileyici arayüzler üretiyorum.',
-    },
-    {
-      ikon: 'icon-rocket',
-      baslik: 'Backend Geliştirme',
-      aciklama: 'Güvenli ve ölçeklenebilir sunucu taraflı sistemler kuruyorum.',
-    },
-    {
-      ikon: 'icon-wrench',
-      baslik: 'Teknik Destek',
-      aciklama: 'Mevcut projelerin bakımını ve optimizasyonunu yapıyorum.',
-    },
-  ],
+  ustBaslik = 'Ekipmanlar',
+  anaBaslik = 'Kullandığım Cihazlar',
+  hizmetler = [],
 } = Astro.props;
+
+const elTelsizleri = hizmetler.filter(h =>
+  ['Tekser UV99', 'Baofeng UV K5-Plus', 'Anytone AT-D878UVII Plus'].includes(h.baslik)
+);
+
+const mobilTelsizler = hizmetler.filter(h =>
+  ['Retevis RT95', 'Anytone AT-D578UV Plus'].includes(h.baslik)
+);
+
+const antenler = hizmetler.filter(h =>
+  ['Diamond X30', 'Flower Pot Anten', 'Moxon UHF Anten', 'Ground Plane Anten'].includes(h.baslik)
+);
 ---
 
-<section class="content-section bg-primary text-white text-center" id="services">
+<section class="content-section text-white text-center" id="services" style="background-color:#1a3a6b;">
   <div class="container px-4 px-lg-5">
 
-    <div class="content-section-heading">
-      <h3 class="text-secondary mb-0">{ustBaslik}</h3>
-      <h2 class="mb-5">{anaBaslik}</h2>
+    <div class="content-section-heading mb-5">
+      <h3 class="text-warning mb-0">{ustBaslik}</h3>
+      <h2 class="mb-2">{anaBaslik}</h2>
+      <p class="text-white-50">Aktif olarak kullandığım telsiz ekipmanları</p>
     </div>
 
-    <div class="row gx-4 gx-lg-5">
-      {hizmetler.map((hizmet) => (
-        <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-          <span class="service-icon rounded-circle mx-auto mb-3">
-            <i class={hizmet.ikon}></i>
-          </span>
-          <h4><strong>{hizmet.baslik}</strong></h4>
-          <p class="text-faded mb-0">{hizmet.aciklama}</p>
-        </div>
-      ))}
+    <!-- El Telsizleri -->
+    <div class="mb-5">
+      <h4 class="text-warning mb-4">
+        <i class="fas fa-walkie-talkie me-2"></i>El Telsizleri
+      </h4>
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        {elTelsizleri.map((ekipman) => (
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="p-4 rounded h-100" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15);">
+              <div class="mb-3">
+                <i class="fas fa-walkie-talkie fa-2x text-warning"></i>
+              </div>
+              <h5 class="fw-bold mb-1">{ekipman.baslik}</h5>
+              <p class="text-white-50 mb-0 small">{ekipman.aciklama}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Mobil / Araç Telsizleri -->
+    <div class="mb-5">
+      <h4 class="text-warning mb-4">
+        <i class="fas fa-car me-2"></i>Mobil & Araç Telsizleri
+      </h4>
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        {mobilTelsizler.map((ekipman) => (
+          <div class="col-lg-5 col-md-6 mb-4">
+            <div class="p-4 rounded h-100" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15);">
+              <div class="mb-3">
+                <i class="fas fa-car-side fa-2x text-warning"></i>
+              </div>
+              <h5 class="fw-bold mb-1">{ekipman.baslik}</h5>
+              <p class="text-white-50 mb-0 small">{ekipman.aciklama}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Antenler -->
+    <div class="mb-3">
+      <h4 class="text-warning mb-4">
+        <i class="fas fa-broadcast-tower me-2"></i>Anten Sistemleri
+      </h4>
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        {antenler.map((ekipman) => (
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="p-4 rounded h-100" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15);">
+              <div class="mb-3">
+                <i class="fas fa-broadcast-tower fa-2x text-warning"></i>
+              </div>
+              <h5 class="fw-bold mb-1">{ekipman.baslik}</h5>
+              <p class="text-white-50 mb-0 small">{ekipman.aciklama}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
 
   </div>

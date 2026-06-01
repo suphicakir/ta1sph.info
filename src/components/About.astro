@@ -9,22 +9,103 @@ interface Props {
 
 const {
   baslik = 'Hakkımda',
-  aciklama = 'Merhaba! Ben bir Full Stack Developer\'ım. Web teknolojileri, açık kaynak yazılımlar ve modern geliştirme araçlarına olan tutkumla projeler üretiyorum.',
-  butonYazi = 'Neler Yapıyorum?',
+  aciklama = '',
+  butonYazi = 'Ekipmanlarım',
   butonHedef = '#services',
 } = Astro.props;
+
+const bilgiler = [
+  { ikon: 'fas fa-broadcast-tower', baslik: 'Çağrı İşareti', deger: 'TA1SPH' },
+  { ikon: 'fas fa-id-badge',        baslik: 'DMR ID',         deger: '2866151' },
+  { ikon: 'fas fa-map-marker-alt',  baslik: 'QTH',            deger: 'İstanbul, Gaziosmanpaşa' },
+  { ikon: 'fas fa-globe',           baslik: 'Locator',        deger: 'KN41KB' },
+  { ikon: 'fas fa-users',           baslik: 'Dernek',         deger: 'ARC | YM1KTC' },
+  { ikon: 'fas fa-pen-nib',         baslik: 'Makale',         deger: 'radio.org.tr' },
+];
 ---
 
 <section class="content-section bg-light" id="about">
-  <div class="container px-4 px-lg-5 text-center">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-      <div class="col-lg-10">
-        <h2>{baslik}</h2>
-        <p class="lead mb-5">{aciklama}</p>
-        <a class="btn btn-dark btn-xl js-scroll-trigger" href={butonHedef}>
-          {butonYazi}
-        </a>
+  <div class="container px-4 px-lg-5">
+
+    <div class="text-center mb-5">
+      <h2>{baslik}</h2>
+      <p class="lead mx-auto" style="max-width: 720px;">{aciklama}</p>
+    </div>
+
+    <!-- Bilgi Kartları -->
+    <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+      {bilgiler.map((b) => (
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="d-flex align-items-center p-3 rounded shadow-sm bg-white">
+            <div class="me-3" style="min-width:42px; text-align:center;">
+              <i class={`${b.ikon} fa-lg`} style="color:#1a3a6b;"></i>
+            </div>
+            <div>
+              <div class="text-muted small">{b.baslik}</div>
+              <div class="fw-bold" style="color:#1a3a6b;">{b.deger}</div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- DMR Talk Group bilgileri -->
+    <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+      <div class="col-lg-8">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h5 class="mb-3" style="color:#1a3a6b;">
+              <i class="fas fa-satellite-dish me-2"></i>Takip Ettiğim DMR Talk Group'ları
+            </h5>
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2">
+                <span class="badge me-2" style="background:#1a3a6b;">TG 28690</span>
+                Amatör Radyocular Derneği (ARC | YM1KTC)
+              </li>
+              <li class="mb-2">
+                <span class="badge me-2" style="background:#1a3a6b;">TG 28634</span>
+                İstanbul
+              </li>
+              <li>
+                <span class="badge me-2" style="background:#1a3a6b;">TG 28600</span>
+                Multimode Türkiye (DMR · D-STAR · YSF)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Röle Frekansları -->
+      <div class="col-lg-8 mt-4">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body p-4">
+            <h5 class="mb-3" style="color:#1a3a6b;">
+              <i class="fas fa-signal me-2"></i>Takip Ettiğim Röle Frekansları
+            </h5>
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2">
+                <span class="badge me-2" style="background:#0d6efd;">439.200 MHz</span>
+                Tekstilkent Rölesi · Tx 88.5
+              </li>
+              <li class="mb-2">
+                <span class="badge me-2" style="background:#0d6efd;">439.250 MHz</span>
+                TAMAD Esenyurt · TxRx 94.8
+              </li>
+              <li>
+                <span class="badge me-2" style="background:#198754;">433.500 MHz</span>
+                UHF FM Çağrı Simplex
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
+
+    <div class="text-center">
+      <a class="btn btn-dark btn-xl js-scroll-trigger" href={butonHedef}>
+        {butonYazi}
+      </a>
+    </div>
+
   </div>
 </section>

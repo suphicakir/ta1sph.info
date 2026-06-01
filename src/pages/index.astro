@@ -27,79 +27,102 @@ import Footer from '../components/Footer.astro';
   />
 
   <About
-    baslik="Hakkımda"
-    aciklama="Merhaba! Ben bir Full Stack Developer'ım. Modern web teknolojileri,
-    açık kaynak yazılımlar ve kullanıcı odaklı tasarım konularına olan tutkumla
-    projeler üretiyorum. Pardus, Linux ve özgür yazılım topluluklarına katkı
-    sağlamaktan keyif alıyorum."
-    butonYazi="Neler Yapıyorum?"
-    butonHedef="#services"
-  />
+  baslik="Hakkımda"
+  aciklama="Merhaba! Ben Suphi Çakır (TA1SPH). İstanbul, Gaziosmanpaşa'dan aktif bir amatör radyocuyum. DMR, VHF/UHF analog ve dijital modlarda çevrim yapıyorum. Amatör Radyocular Derneği (ARC | YM1KTC) üyesiyim ve radio.org.tr'de makaleler yazıyorum. Locator: KN41KB · DMR ID: 2866151"
+  butonYazi="Ekipmanlarım"
+  butonHedef="#services"
+/>
 
   <Services
-    ustBaslik="Hizmetler"
-    anaBaslik="Neler Yapıyorum?"
-    hizmetler={[
-      {
-        ikon: 'icon-screen-smartphone',
-        baslik: 'Responsive Tasarım',
-        aciklama: 'Her ekran boyutunda mükemmel görünen arayüzler tasarlıyorum.',
-      },
-      {
-        ikon: 'icon-pencil',
-        baslik: 'Frontend Geliştirme',
-        aciklama: 'Modern web teknolojileriyle hızlı ve etkileyici arayüzler üretiyorum.',
-      },
-      {
-        ikon: 'icon-rocket',
-        baslik: 'Backend Geliştirme',
-        aciklama: 'Güvenli ve ölçeklenebilir sunucu taraflı sistemler kuruyorum.',
-      },
-      {
-        ikon: 'icon-wrench',
-        baslik: 'Teknik Destek',
-        aciklama: 'Mevcut projelerin bakımını ve optimizasyonunu yapıyorum.',
-      },
-    ]}
-  />
+  ustBaslik="Ekipmanlar"
+  anaBaslik="Kullandığım Cihazlar"
+  hizmetler={[
+    {
+      ikon: 'icon-screen-smartphone',
+      baslik: 'Tekser UV99',
+      aciklama: 'UHF & VHF Analog El Telsizi',
+    },
+    {
+      ikon: 'icon-screen-smartphone',
+      baslik: 'Baofeng UV K5-Plus',
+      aciklama: 'UHF & VHF Analog El Telsizi',
+    },
+    {
+      ikon: 'icon-screen-smartphone',
+      baslik: 'Anytone AT-D878UVII Plus',
+      aciklama: 'Dijital & Analog VHF/UHF El Telsizi',
+    },
+    {
+      ikon: 'icon-screen-desktop',
+      baslik: 'Retevis RT95',
+      aciklama: 'UHF & VHF Analog Mobil Telsiz',
+    },
+    {
+      ikon: 'icon-screen-desktop',
+      baslik: 'Anytone AT-D578UV Plus',
+      aciklama: 'Dijital & Analog Dual Band Araç Telsizi',
+    },
+    {
+      ikon: 'icon-feed',
+      baslik: 'Diamond X30',
+      aciklama: 'Çatı Anteni · VHF/UHF',
+    },
+    {
+      ikon: 'icon-feed',
+      baslik: 'Flower Pot Anten',
+      aciklama: 'Omni-Directional · VHF/UHF',
+    },
+    {
+      ikon: 'icon-feed',
+      baslik: 'Moxon UHF Anten',
+      aciklama: 'Yönlü · UHF Band',
+    },
+    {
+      ikon: 'icon-feed',
+      baslik: 'Ground Plane Anten',
+      aciklama: 'Dikey Polarize · UHF Band',
+    },
+  ]}
+/>
 
   <Callout
-    baslik="Birlikte harika şeyler"
-    vurguKelime="üretelim!"
-    butonYazi="İletişime Geç"
-    butonLink="#contact"
-  />
+  baslik="Amatör Radyo tutkusu"
+  vurguKelime="hayat boyu sürer!"
+  butonYazi="İletişime Geç"
+  butonLink="#contact"
+/>
 
+ <!-- ! Portfolio -->
   <Portfolio
-    ustBaslik="Portfolyo"
-    anaBaslik="Son Projelerim"
-    projeler={[
-      {
-        gorsel: '/assets/img/portfolio-1.jpg',
-        baslik: 'Proje Bir',
-        aciklama: 'Modern bir web uygulaması tasarımı ve geliştirmesi.',
-        link: '#!',
-      },
-      {
-        gorsel: '/assets/img/portfolio-2.jpg',
-        baslik: 'Proje İki',
-        aciklama: 'Responsive arayüz ve kullanıcı deneyimi odaklı proje.',
-        link: '#!',
-      },
-      {
-        gorsel: '/assets/img/portfolio-3.jpg',
-        baslik: 'Proje Üç',
-        aciklama: 'Full stack uygulama geliştirme ve deployment süreci.',
-        link: '#!',
-      },
-      {
-        gorsel: '/assets/img/portfolio-4.jpg',
-        baslik: 'Proje Dört',
-        aciklama: 'Açık kaynak katkısı ve teknik dokümantasyon çalışması.',
-        link: '#!',
-      },
-    ]}
-  />
+  ustBaslik="Portfolyo"
+  anaBaslik="Projeler & Etkinlikler"
+  projeler={[
+    {
+      gorsel: '/assets/img/portfolio-1.jpg',
+      baslik: 'DMR Ağı',
+      aciklama: 'TG28690 üzerinden ARC çevrimi ve DMR dijital mod deneyimleri.',
+      link: 'https://dmr.radio.org.tr',
+    },
+    {
+      gorsel: '/assets/img/portfolio-2.jpg',
+      baslik: 'Anten Projeleri',
+      aciklama: 'Flower pot, Moxon ve Ground plane anten yapım & kurulum çalışmaları.',
+      link: '#!',
+    },
+    {
+      gorsel: '/assets/img/portfolio-3.jpg',
+      baslik: 'ARC Üyeliği',
+      aciklama: 'Amatör Radyocular Derneği etkinlikleri, eğitimler ve teknik projeler.',
+      link: 'https://radio.org.tr',
+    },
+    {
+      gorsel: '/assets/img/portfolio-4.jpg',
+      baslik: 'Makaleler',
+      aciklama: 'radio.org.tr\'de yayımlanan amatör telsizcilik ve teknik içerikler.',
+      link: 'https://radio.org.tr/blog',
+    },
+  ]}
+/>
 
   <CallToAction
     baslik="Bir projen mi var? Konuşalım!"
